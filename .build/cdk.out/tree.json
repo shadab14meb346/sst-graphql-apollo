@@ -1,0 +1,566 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.82"
+        }
+      },
+      "Administrator-graphql-apollo-my-stack": {
+        "id": "Administrator-graphql-apollo-my-stack",
+        "path": "Administrator-graphql-apollo-my-stack",
+        "children": {
+          "SSTMetadata": {
+            "id": "SSTMetadata",
+            "path": "Administrator-graphql-apollo-my-stack/SSTMetadata",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnResource",
+              "version": "2.7.0"
+            }
+          },
+          "ApolloApi": {
+            "id": "ApolloApi",
+            "path": "Administrator-graphql-apollo-my-stack/ApolloApi",
+            "children": {
+              "Api": {
+                "id": "Api",
+                "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Api",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Api/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Api",
+                      "aws:cdk:cloudformation:props": {
+                        "corsConfiguration": {
+                          "allowHeaders": [
+                            "*"
+                          ],
+                          "allowMethods": [
+                            "*"
+                          ],
+                          "allowOrigins": [
+                            "*"
+                          ]
+                        },
+                        "name": "Administrator-graphql-apollo-ApolloApi",
+                        "protocolType": "HTTP",
+                        "tags": {
+                          "sst:app": "graphql-apollo",
+                          "sst:stage": "Administrator"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnApi",
+                      "version": "2.7.0"
+                    }
+                  },
+                  "DefaultStage": {
+                    "id": "DefaultStage",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Api/DefaultStage",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Api/DefaultStage/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Stage",
+                          "aws:cdk:cloudformation:props": {
+                            "apiId": {
+                              "Ref": "ApolloApi5C946078"
+                            },
+                            "stageName": "$default",
+                            "accessLogSettings": {
+                              "format": "{\"requestTime\":\"$context.requestTime\",\"requestId\":\"$context.requestId\",\"httpMethod\":\"$context.httpMethod\",\"path\":\"$context.path\",\"routeKey\":\"$context.routeKey\",\"status\":$context.status,\"responseLatency\":$context.responseLatency,\"integrationRequestId\":\"$context.integration.requestId\",\"integrationStatus\":\"$context.integration.status\",\"integrationLatency\":\"$context.integration.latency\",\"integrationServiceStatus\":\"$context.integration.integrationStatus\",\"ip\":\"$context.identity.sourceIp\",\"userAgent\":\"$context.identity.userAgent\",\"cognitoIdentityId\":\"$context.identity.cognitoIdentityId\"}",
+                              "destinationArn": {
+                                "Fn::GetAtt": [
+                                  "ApolloApiLogGroup0BBE3968",
+                                  "Arn"
+                                ]
+                              }
+                            },
+                            "autoDeploy": true,
+                            "tags": {
+                              "sst:app": "graphql-apollo",
+                              "sst:stage": "Administrator"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnStage",
+                          "version": "2.7.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpStage",
+                      "version": "2.7.0-alpha.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpApi",
+                  "version": "2.7.0-alpha.0"
+                }
+              },
+              "LogGroup": {
+                "id": "LogGroup",
+                "path": "Administrator-graphql-apollo-my-stack/ApolloApi/LogGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/LogGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "logGroupName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "/aws/vendedlogs/apis/Administrator-graphql-apollo-ApolloApi-",
+                              {
+                                "Ref": "ApolloApi5C946078"
+                              },
+                              "/default"
+                            ]
+                          ]
+                        },
+                        "tags": [
+                          {
+                            "key": "sst:app",
+                            "value": "graphql-apollo"
+                          },
+                          {
+                            "key": "sst:stage",
+                            "value": "Administrator"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_logs.CfnLogGroup",
+                      "version": "2.7.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_logs.LogGroup",
+                  "version": "2.7.0"
+                }
+              },
+              "Lambda_GET_--": {
+                "id": "Lambda_GET_--",
+                "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--",
+                "children": {
+                  "ServiceRole": {
+                    "id": "ServiceRole",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/ServiceRole",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/ServiceRole/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                          "aws:cdk:cloudformation:props": {
+                            "assumeRolePolicyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "sts:AssumeRole",
+                                  "Effect": "Allow",
+                                  "Principal": {
+                                    "Service": "lambda.amazonaws.com"
+                                  }
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "managedPolicyArns": [
+                              {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                                  ]
+                                ]
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "sst:app",
+                                "value": "graphql-apollo"
+                              },
+                              {
+                                "key": "sst:stage",
+                                "value": "Administrator"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                          "version": "2.7.0"
+                        }
+                      },
+                      "DefaultPolicy": {
+                        "id": "DefaultPolicy",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/ServiceRole/DefaultPolicy",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/ServiceRole/DefaultPolicy/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                              "aws:cdk:cloudformation:props": {
+                                "policyDocument": {
+                                  "Statement": [
+                                    {
+                                      "Action": [
+                                        "xray:PutTraceSegments",
+                                        "xray:PutTelemetryRecords"
+                                      ],
+                                      "Effect": "Allow",
+                                      "Resource": "*"
+                                    },
+                                    {
+                                      "Action": "s3:*",
+                                      "Effect": "Allow",
+                                      "Resource": [
+                                        "arn:aws:s3:::administrator-graphql-apollo-debug-bucket83908e77-10zlhiuiiskue",
+                                        "arn:aws:s3:::administrator-graphql-apollo-debug-bucket83908e77-10zlhiuiiskue/*"
+                                      ]
+                                    }
+                                  ],
+                                  "Version": "2012-10-17"
+                                },
+                                "policyName": "ApolloApiLambdaGETServiceRoleDefaultPolicy09933A25",
+                                "roles": [
+                                  {
+                                    "Ref": "ApolloApiLambdaGETServiceRole5B3E2A44"
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                              "version": "2.7.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.Policy",
+                          "version": "2.7.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Role",
+                      "version": "2.7.0"
+                    }
+                  },
+                  "Code": {
+                    "id": "Code",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.7.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/Code/AssetBucket",
+                        "children": {
+                          "Notifications": {
+                            "id": "Notifications",
+                            "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/Code/AssetBucket/Notifications",
+                            "constructInfo": {
+                              "fqn": "constructs.Construct",
+                              "version": "10.0.82"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.7.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.7.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": "cdk-hnb659fds-assets-050345335900-us-east-1",
+                          "s3Key": "f18d08b81769b11198afa9ab2479266930470ef08f26e14ad79e32181843b562.zip"
+                        },
+                        "role": {
+                          "Fn::GetAtt": [
+                            "ApolloApiLambdaGETServiceRole5B3E2A44",
+                            "Arn"
+                          ]
+                        },
+                        "environment": {
+                          "variables": {
+                            "SST_DEBUG_SRC_PATH": ".",
+                            "SST_DEBUG_SRC_HANDLER": "src/server.handler",
+                            "SST_DEBUG_ENDPOINT": "wss://rj83ctpwwd.execute-api.us-east-1.amazonaws.com/Administrator",
+                            "SST_DEBUG_BUCKET_NAME": "administrator-graphql-apollo-debug-bucket83908e77-10zlhiuiiskue",
+                            "SST_FUNCTION_ID": "Administrator-graphql-apollo-my-stack-ApolloApi-Lambda_GET_-",
+                            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                            "SST_DEBUG_IS_API_ROUTE": "1"
+                          }
+                        },
+                        "handler": "index.main",
+                        "memorySize": 1024,
+                        "runtime": "nodejs12.x",
+                        "tags": [
+                          {
+                            "key": "sst:app",
+                            "value": "graphql-apollo"
+                          },
+                          {
+                            "key": "sst:stage",
+                            "value": "Administrator"
+                          }
+                        ],
+                        "timeout": 10,
+                        "tracingConfig": {
+                          "mode": "Active"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.7.0"
+                    }
+                  },
+                  "EventInvokeConfig": {
+                    "id": "EventInvokeConfig",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/EventInvokeConfig",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Lambda_GET_--/EventInvokeConfig/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::EventInvokeConfig",
+                          "aws:cdk:cloudformation:props": {
+                            "functionName": {
+                              "Ref": "ApolloApiLambdaGET95C28312"
+                            },
+                            "qualifier": "$LATEST",
+                            "maximumRetryAttempts": 0
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnEventInvokeConfig",
+                          "version": "2.7.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.EventInvokeConfig",
+                      "version": "2.7.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.7.0"
+                }
+              },
+              "Route_GET_--": {
+                "id": "Route_GET_--",
+                "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_GET_--",
+                "children": {
+                  "Integration_GET_---Permission": {
+                    "id": "Integration_GET_---Permission",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_GET_--/Integration_GET_---Permission",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                      "aws:cdk:cloudformation:props": {
+                        "action": "lambda:InvokeFunction",
+                        "functionName": {
+                          "Fn::GetAtt": [
+                            "ApolloApiLambdaGET95C28312",
+                            "Arn"
+                          ]
+                        },
+                        "principal": "apigateway.amazonaws.com",
+                        "sourceArn": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":execute-api:us-east-1:050345335900:",
+                              {
+                                "Ref": "ApolloApi5C946078"
+                              },
+                              "/*/*/"
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                      "version": "2.7.0"
+                    }
+                  },
+                  "Integration_GET_--": {
+                    "id": "Integration_GET_--",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_GET_--/Integration_GET_--",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_GET_--/Integration_GET_--/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Integration",
+                          "aws:cdk:cloudformation:props": {
+                            "apiId": {
+                              "Ref": "ApolloApi5C946078"
+                            },
+                            "integrationType": "AWS_PROXY",
+                            "integrationUri": {
+                              "Fn::GetAtt": [
+                                "ApolloApiLambdaGET95C28312",
+                                "Arn"
+                              ]
+                            },
+                            "payloadFormatVersion": "1.0"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnIntegration",
+                          "version": "2.7.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpIntegration",
+                      "version": "2.7.0-alpha.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_GET_--/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "apiId": {
+                          "Ref": "ApolloApi5C946078"
+                        },
+                        "routeKey": "GET /",
+                        "authorizationType": "NONE",
+                        "target": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "integrations/",
+                              {
+                                "Ref": "ApolloApiRouteGETIntegrationGETB8F154D1"
+                              }
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnRoute",
+                      "version": "2.7.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpRoute",
+                  "version": "2.7.0-alpha.0"
+                }
+              },
+              "Route_POST_--": {
+                "id": "Route_POST_--",
+                "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_POST_--",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Administrator-graphql-apollo-my-stack/ApolloApi/Route_POST_--/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "apiId": {
+                          "Ref": "ApolloApi5C946078"
+                        },
+                        "routeKey": "POST /",
+                        "authorizationType": "NONE",
+                        "target": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "integrations/",
+                              {
+                                "Ref": "ApolloApiRouteGETIntegrationGETB8F154D1"
+                              }
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigatewayv2.CfnRoute",
+                      "version": "2.7.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigatewayv2-alpha.HttpRoute",
+                  "version": "2.7.0-alpha.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.82"
+            }
+          },
+          "ApiEndpoint": {
+            "id": "ApiEndpoint",
+            "path": "Administrator-graphql-apollo-my-stack/ApiEndpoint",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnOutput",
+              "version": "2.7.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.7.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.7.0"
+    }
+  }
+}

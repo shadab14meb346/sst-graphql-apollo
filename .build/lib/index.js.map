@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../stacks/index.ts", "../../stacks/MyStack.ts"],
+  "sourcesContent": ["import MyStack from \"./MyStack\";\nimport * as sst from \"@serverless-stack/resources\";\n\nexport default function main(app: sst.App): void {\n  new MyStack(app, \"my-stack\");\n\n  // Add more stacks\n}\n", "import * as sst from \"@serverless-stack/resources\";\n\nexport default class MyStack extends sst.Stack {\n\tconstructor(scope: sst.App, id: string, props?: sst.StackProps) {\n\t\tsuper(scope, id, props);\n\n\t\t// Create the GraphQL API\n\t\tconst api = new sst.GraphQLApi(this, \"ApolloApi\", {\n\t\t\tserver: \"src/server.handler\",\n\t\t});\n\n\t\t// Show the API endpoint in output\n\t\tthis.addOutputs({\n\t\t\tApiEndpoint: api.url,\n\t\t});\n\t}\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;;;ACAA,UAAqB;AAErB,4BAAyC,UAAM;AAAA,EAC9C,YAAY,OAAgB,IAAY,OAAwB;AAC/D,UAAM,OAAO,IAAI,KAAK;AAGtB,UAAM,MAAM,IAAQ,eAAW,MAAM,aAAa;AAAA,MACjD,QAAQ;AAAA,IACT,CAAC;AAGD,SAAK,WAAW;AAAA,MACf,aAAa,IAAI;AAAA,IAClB,CAAC;AAAA,EACF;AACD;;;ADbe,cAAc,KAAoB;AAC/C,MAAI,QAAQ,KAAK,UAAU;AAG7B;",
+  "names": []
+}

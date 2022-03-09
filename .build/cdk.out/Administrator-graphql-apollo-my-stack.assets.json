@@ -1,0 +1,34 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "f18d08b81769b11198afa9ab2479266930470ef08f26e14ad79e32181843b562": {
+      "source": {
+        "path": "asset.f18d08b81769b11198afa9ab2479266930470ef08f26e14ad79e32181843b562.zip",
+        "packaging": "file"
+      },
+      "destinations": {
+        "050345335900-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-050345335900-us-east-1",
+          "objectKey": "f18d08b81769b11198afa9ab2479266930470ef08f26e14ad79e32181843b562.zip",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::050345335900:role/cdk-hnb659fds-file-publishing-role-050345335900-us-east-1"
+        }
+      }
+    },
+    "546856d585db6c5b048cf6d2aa895fea5125c4e7bfbd181128f9d8a9c577b858": {
+      "source": {
+        "path": "Administrator-graphql-apollo-my-stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "050345335900-us-east-1": {
+          "bucketName": "cdk-hnb659fds-assets-050345335900-us-east-1",
+          "objectKey": "546856d585db6c5b048cf6d2aa895fea5125c4e7bfbd181128f9d8a9c577b858.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::050345335900:role/cdk-hnb659fds-file-publishing-role-050345335900-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
